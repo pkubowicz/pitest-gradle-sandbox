@@ -1,0 +1,9 @@
+dependencies {
+    api project(':core')
+
+    api('io.projectreactor.kotlin:reactor-kotlin-extensions')
+    api("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testRuntimeOnly('de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0')
+}

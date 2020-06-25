@@ -1,0 +1,5 @@
+rootProject.name = 'pitest-gradle-sandbox'
+
+include ':core'
+include ':data'
+//include ':integration'
