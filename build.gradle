@@ -6,6 +6,8 @@ plugins {
     id 'info.solidsoft.pitest' version '1.5.1' apply false
 }
 
+boolean useDescartes = false
+
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'kotlin'
@@ -24,7 +26,10 @@ subprojects {
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage'
         }
-//        pitest('eu.stamp-project:descartes:1.2.6') // comment out for default mutation engine - alters behaviour
+        if (useDescartes) {
+            // just adding this dependency to classpath breaks default mutation engine
+            pitest('eu.stamp-project:descartes:1.2.6')
+        }
     }
 
     test {
@@ -39,11 +44,11 @@ subprojects {
 //        verbose = true
         jvmArgs = ['-Dspring.test.constructor.autowire.mode=all']
 
-        // default mutation engine only
-        mutators = ["STRONGER"]
-
-        // Descartes only
-//        mutationEngine = 'descartes'
+        if (useDescartes) {
+            mutationEngine = 'descartes'
+        } else {
+            mutators = ["STRONGER"]
+        }
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
