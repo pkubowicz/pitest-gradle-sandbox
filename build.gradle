@@ -3,13 +3,17 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.spring' version '1.3.72' apply false
     id 'com.github.ben-manes.versions' version '0.28.0'
     id 'org.springframework.boot' version '2.3.1.RELEASE' apply false
+    id 'info.solidsoft.pitest' version '1.5.1' apply false
 }
 
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'kotlin'
     apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
-    apply plugin: 'jacoco'
+//    apply plugin: 'jacoco'
+    apply plugin: 'info.solidsoft.pitest'
+
+    group = 'com.example'
 
     repositories {
         jcenter()
@@ -25,6 +29,15 @@ subprojects {
     test {
         useJUnitPlatform()
         systemProperty 'spring.test.constructor.autowire.mode', 'all'
+    }
+
+    pitest {
+        pitestVersion = '1.5.2'
+        junit5PluginVersion = '0.12'
+//        avoidCallsTo = ["kotlin.jvm.internal", "org.slf4j"]
+//        verbose = true
+        jvmArgs = ['-Dspring.test.constructor.autowire.mode=all']
+        mutators = ["STRONGER"]
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
