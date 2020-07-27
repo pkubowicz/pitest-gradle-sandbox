@@ -14,7 +14,7 @@ class InvoiceService(private val invoiceRepository: InvoiceRepository) {
     fun recordPayment(paymentRequest: PaymentRequest): Mono<Invoice> {
         validate(paymentRequest)
         return invoiceRepository.findById(paymentRequest.invoiceId)
-            // not counted as branch
+            // missing test for ID not found, but 100% coverage as this is not counted as branch
             .switchIfEmpty(Mono.error(IllegalStateException("no invoice with ID ${paymentRequest.invoiceId}")))
             .flatMap { invoice ->
                 val updated = Invoices.recordPayment(invoice, convertAmount(paymentRequest.amount), clock)

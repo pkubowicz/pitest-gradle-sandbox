@@ -35,5 +35,4 @@ class ConsoleNotificationSender : NotificationSender {
     override fun sendNotification(notification: String) {
         println(notification)
     }
-
 }
