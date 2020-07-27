@@ -40,7 +40,6 @@ subprojects {
     pitest {
         pitestVersion = '1.5.2'
         junit5PluginVersion = '0.12'
-//        avoidCallsTo = ["kotlin.jvm.internal", "org.slf4j"]
 //        verbose = true
         jvmArgs = ['-Dspring.test.constructor.autowire.mode=all']
 
@@ -50,6 +49,7 @@ subprojects {
         if (useDescartes) {
             mutationEngine = 'descartes'
         } else {
+            avoidCallsTo = ["kotlin.jvm.internal", "org.slf4j"]
             mutators = ["STRONGER"]
         }
     }
