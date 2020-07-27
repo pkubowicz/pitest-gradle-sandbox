@@ -24,6 +24,7 @@ subprojects {
         testImplementation('org.springframework.boot:spring-boot-starter-test') {
             exclude group: 'org.junit.vintage'
         }
+//        pitest('eu.stamp-project:descartes:1.2.6') // comment out for default mutation engine - alters behaviour
     }
 
     test {
@@ -37,7 +38,12 @@ subprojects {
 //        avoidCallsTo = ["kotlin.jvm.internal", "org.slf4j"]
 //        verbose = true
         jvmArgs = ['-Dspring.test.constructor.autowire.mode=all']
+
+        // default mutation engine only
         mutators = ["STRONGER"]
+
+        // Descartes only
+//        mutationEngine = 'descartes'
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
