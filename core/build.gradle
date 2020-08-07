@@ -1,3 +1,7 @@
+plugins {
+    id 'java-test-fixtures'
+}
+
 dependencies {
     api platform('org.springframework.boot:spring-boot-dependencies:2.3.2.RELEASE')
 
