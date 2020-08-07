@@ -13,7 +13,7 @@ object Invoices {
             throw IllegalStateException("invoice already paid")
         }
         // not tested: amount greater than required
-        if (amount != invoice.amount) {
+        if (amount < invoice.amount) {
             throw IllegalStateException("wrong amount")
         }
         return invoice.copy(status = InvoiceStatus.PAID, paymentDate = clock.instant())

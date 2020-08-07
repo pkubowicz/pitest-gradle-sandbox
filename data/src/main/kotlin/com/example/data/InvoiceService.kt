@@ -30,7 +30,8 @@ class InvoiceService(private val invoiceRepository: InvoiceRepository) {
     }
 
     private fun convertAmount(amount: BigDecimal): Int =
-        (amount * BigDecimal.valueOf(100)).intValueExact()
+        // wrong: should multiply by 100
+        (amount * BigDecimal.valueOf(1000)).intValueExact()
 }
 
 data class PaymentRequest(
