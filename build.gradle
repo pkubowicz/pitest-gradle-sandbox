@@ -4,6 +4,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.29.0'
     id 'org.springframework.boot' version '2.3.2.RELEASE' apply false
     id 'info.solidsoft.pitest' version '1.5.1' apply false
+    id "org.wrlyonsjr.jacoco-full-report" version "0.0.6"
 }
 
 boolean useDescartes = false
@@ -66,3 +67,6 @@ subprojects {
         annotation("org.springframework.context.annotation.Configuration")
     }
 }
+
+// just for JaCoCo in order to define a repository
+repositories { jcenter() }
