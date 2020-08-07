@@ -15,7 +15,7 @@ class OverdueInvoiceNotificationJob(
 
     fun sendNotifications() {
         invoiceRepository.findAllByStatusNot(InvoiceStatus.PAID) // wrong: should not take CANCELLED
-            .filter { Invoices.isOverdue(it, clock) } // not counted as branch
+            .filter { Invoices.isOverdue(it, clock) } // not covered by tests, but not counted as branch
             .next() // will only take first element, but tests won't detect this
             .doOnNext { sendNotification(it) }
             .subscribe()

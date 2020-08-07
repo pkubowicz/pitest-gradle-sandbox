@@ -16,11 +16,12 @@ internal class OverdueInvoiceNotificationJobTest {
     @Test
     fun `sends notifications`() {
         whenever(invoiceRepository.findAllByStatusNot(any())).thenReturn(
-            Flux.just(Invoice("i1", 151, Instant.now()))
+            Flux.just(Invoice("i1", 151, Instant.now())) // poor test: just 1 invoice, all invoices overdue
         )
 
         overdueInvoiceNotificationJob.sendNotifications()
 
-        verify(invoiceRepository, times(1)).findAllByStatusNot(any())
+        verify(invoiceRepository, times(1)).findAllByStatusNot(any()) // not testing if criteria correct
+        verify(notificationSender).sendNotification(any()) // not testing for duplicates and for text
     }
 }
