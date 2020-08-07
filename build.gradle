@@ -7,7 +7,7 @@ plugins {
     id "org.wrlyonsjr.jacoco-full-report" version "0.0.6"
 }
 
-boolean useDescartes = false
+boolean useDescartes = hasProperty("descartes")
 
 subprojects {
     apply plugin: 'java-library'
