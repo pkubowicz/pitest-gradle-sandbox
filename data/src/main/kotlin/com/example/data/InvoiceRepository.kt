@@ -9,5 +9,5 @@ import reactor.core.publisher.Flux
 @Repository
 interface InvoiceRepository : ReactiveMongoRepository<Invoice, String> {
 
-    fun findAllByStatusNot(status: InvoiceStatus): Flux<Invoice>
+    fun findAllByStatusNotIn(status: List<InvoiceStatus>): Flux<Invoice>
 }

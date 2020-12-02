@@ -14,7 +14,7 @@ class OverdueInvoiceNotificationJob(
     private val clock = Clock.systemUTC()
 
     fun sendNotifications() {
-        invoiceRepository.findAllByStatusNot(InvoiceStatus.PAID) // wrong: should not take CANCELLED
+        invoiceRepository.findAllByStatusNotIn(listOf(InvoiceStatus.PAID)) // wrong: should not take CANCELLED
             .filter { Invoices.isOverdue(it, clock) } // not covered by tests, but not counted as branch
             .next() // will only take first element, but tests won't detect this
             .doOnNext { sendNotification(it) }
@@ -22,7 +22,7 @@ class OverdueInvoiceNotificationJob(
     }
 
     private fun sendNotification(invoice: Invoice) {
-        notificationSender.sendNotification("${invoice.id} is overdue!")
+        notificationSender.sendNotification("${invoice.status} is overdue!") // status used instead of id
     }
 }
 
