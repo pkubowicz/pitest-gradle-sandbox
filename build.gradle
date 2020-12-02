@@ -1,9 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.72' apply false
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.3.72' apply false
-    id 'com.github.ben-manes.versions' version '0.29.0'
-    id 'org.springframework.boot' version '2.3.4.RELEASE' apply false
-    id 'info.solidsoft.pitest' version '1.5.1' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10' apply false
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.4.10' apply false
+    id 'com.github.ben-manes.versions' version '0.36.0'
+    id 'org.springframework.boot' version '2.3.6.RELEASE' apply false
+    id 'info.solidsoft.pitest' version '1.5.2' apply false
     id "org.wrlyonsjr.jacoco-full-report" version "0.0.6"
 }
 
