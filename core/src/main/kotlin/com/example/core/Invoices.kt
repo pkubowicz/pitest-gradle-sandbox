@@ -2,7 +2,12 @@ package com.example.core
 
 import java.time.Clock
 
+data class Account(val balance: Int)
+
 object Invoices {
+
+    fun canPayFrom(account: Account, amount: Int): Boolean =
+        account.balance > amount
 
     fun recordPayment(invoice: Invoice, amount: Int, clock: Clock): Invoice {
         // not tested: cancelled

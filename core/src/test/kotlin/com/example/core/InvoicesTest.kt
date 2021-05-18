@@ -11,6 +11,16 @@ import java.time.ZoneId
 
 class InvoicesTest {
     @Test
+    fun `can pay more`() {
+        assertThat(Invoices.canPayFrom(Account(10), 1)).isTrue()
+    }
+
+    @Test
+    fun `cannot pay less`() {
+        assertThat(Invoices.canPayFrom(Account(10), 20)).isFalse()
+    }
+
+    @Test
     fun `marks waiting invoice paid if amount is sufficient`() {
         val result = Invoices.recordPayment(
             Invoice("i1", 150, someDueDate()),
