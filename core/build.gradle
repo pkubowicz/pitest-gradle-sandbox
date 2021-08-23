@@ -1,5 +1,5 @@
 dependencies {
-    api platform('org.springframework.boot:spring-boot-dependencies:2.4.6')
+    api platform('org.springframework.boot:spring-boot-dependencies:2.5.4')
 
     runtimeOnly('org.jetbrains.kotlin:kotlin-reflect')
 }

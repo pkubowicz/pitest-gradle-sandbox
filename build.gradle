@@ -1,8 +1,8 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10' apply false
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.5.10' apply false
-    id 'com.github.ben-manes.versions' version '0.38.0'
-    id 'org.springframework.boot' version '2.4.6' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.5.21' apply false
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.5.21' apply false
+    id 'com.github.ben-manes.versions' version '0.39.0'
+    id 'org.springframework.boot' version '2.5.4' apply false
     id 'info.solidsoft.pitest' version '1.6.0' apply false
     id "org.wrlyonsjr.jacoco-full-report" version "0.0.6"
 }
@@ -39,7 +39,7 @@ subprojects {
     }
 
     pitest {
-        pitestVersion = '1.6.6'
+        pitestVersion = '1.6.9'
         junit5PluginVersion = '0.14'
 //        verbose = true
         jvmArgs = ['-Dspring.test.constructor.autowire.mode=all']
